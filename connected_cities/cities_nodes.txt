@@ -1,4 +1,5 @@
 Bengaluru, Hyderabad
+Bengaluru, Bengaluru
 Chennai, Bengaluru
 Hyderabad, Nagpur
 Hyderabad, Vijayawada
