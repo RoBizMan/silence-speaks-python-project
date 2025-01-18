@@ -5,11 +5,40 @@ This repository contains my solutions to the Python coding project provided by S
 ---
 
 ## Table of Contents
+- [Running the Programs](#running-the-programs)
 - [Connected Cities Checker](#connected-cities-checker)
 - [Simple Race Simulation](#simple-race-simulation)
-- [Running the Programs](#running-the-programs)
+- [REST API](#rest-api)
 - [Testing](#testing)
 - [Credits](#credits)
+
+---
+
+## Running the Programs
+
+This project can be cloned or forked in order to make a local copy on your own system. Ensure you have Python installed on your machine.
+
+### Cloning
+
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://github.com/RoBizMan/silence-speaks-python-project) 
+2. Locate the Code button above the list of files and click it 
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git Bash or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+6. In your IDE Terminal, type the following command to clone my repository:
+	- `git clone https://github.com/RoBizMan/silence-speaks-python-project.git`
+7. Press Enter to create your local clone.
+
+### Forking
+
+By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
+You can fork this repository by using the following steps:
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/RoBizMan/silence-speaks-python-project)
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
 ---
 
@@ -21,6 +50,7 @@ This program checks if two cities nodes are connected based on provided connecti
 1. Prepare a `cities_nodes.txt` file with city pairs inside the `connected_cities` folder.
 
 Sample `cities_nodes.txt` file:
+
 ```
 Vellore, Shillong
 Vadodara, Thiruvananthapuram
@@ -33,6 +63,7 @@ Vadodara, Thiruvananthapuram
 ### Example Usage
 
 #### If two cities nodes are connected with edges:
+
 ```
 Graph loaded successfully
 Enter the first city (or type 'exit' to quit): Delhi
@@ -41,6 +72,7 @@ Delhi and Kolkata are connected.
 ```
 
 #### If two cities nodes are not connected with edges:
+
 ```
 Graph loaded successfully
 Enter the first city (or type 'exit' to quit): Guwahati
@@ -64,6 +96,7 @@ This program simulates races between different vehicles to determine which one w
 *Optional: It is possible to modify the vehicle's characteristics in the `race_simulation.py` file.*
 
 *Sample `class Motorcycle(Vehicle):` code snippet:*
+
 ```
 class Motorcycle(Vehicle):
     """
@@ -92,6 +125,7 @@ class Motorcycle(Vehicle):
 ### Example Usage
 
 #### Run the simulation and exit the simulation
+
 ```
 Press Enter to start the simulation or type 'quit' to exit: 
 
@@ -137,31 +171,112 @@ Exiting the race simulation. Goodbye!
 
 ---
 
-## Running the Programs
+## REST API
 
-This project can be cloned or forked in order to make a local copy on your own system. Ensure you have Python installed on your machine.
+This microservice echoes messages received via HTTP POST and GET requests, including a timestamp in the response. Flask is the chosen framework for this project as it is a lightweight framework and scalability.
 
-### Cloning
+### Instructions
 
-You can clone the repository by following these steps:
+1. Create a virtual environment by typing `python3 -m venv venv` in the terminal.
 
-1. Go to the [GitHub repository](https://github.com/RoBizMan/silence-speaks-python-project) 
-2. Locate the Code button above the list of files and click it 
-3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
-4. Open Git Bash or Terminal
-5. Change the current working directory to the one where you want the cloned directory
-6. In your IDE Terminal, type the following command to clone my repository:
-	- `git clone https://github.com/RoBizMan/silence-speaks-python-project.git`
-7. Press Enter to create your local clone.
+2. Activate a virtual environment by typing in the terminal:
+- On macOS/Linux: `source venv/bin/activate`
+- On Windows: `.\venv\Scripts\activate`
 
-### Forking
+3. Install the required packages by typing `pip3 install -r rest_microservice/requirements.txt` in the terminal.
 
-By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
-You can fork this repository by using the following steps:
+*Choose one of the following two options:*
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/RoBizMan/silence-speaks-python-project)
-2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
-3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
+**Option 1**
+
+1. Install [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension from the Visual Studio marketplace.
+
+2. Create a file ends with .http within the REST API folder.
+
+Sample `api_test.http` file:
+
+```
+# GET request
+GET http://127.0.0.1:5000/echo
+
+###
+
+# POST request
+POST http://127.0.0.1:5000/echo
+Content-Type: application/json
+
+{
+    "message": "Hello, World!"
+}
+```
+
+3. A "Send Request" button will display above the GET request hyperlink and the POST request hyperlink.
+
+4. Click "Send Request" button and it will display a new split editor with the details of the request.
+
+***or***
+
+**Option 2**
+
+1. Run the program: `python3 rest_microservice/tests/test_routes.py`
+
+2. Open the new bash terminal.
+
+3. To send a GET request, type `curl http://127.0.0.1:5000/echo` in the terminal and it will return the request with message and timestamp.
+
+4. To send a POST request, type `curl -X POST http://127.0.0.1:5000/echo -H "Content-Type: application/json" -d '{"message": "Hello, World!"}'` in the terminal and it will return the request with message and timestamp.
+
+### Example Usage
+
+#### Send a GET request
+
+##### Via REST Client
+
+```
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.13.1
+Date: Sat, 18 Jan 2025 18:12:13 GMT
+Content-Type: application/json
+Content-Length: 97
+Connection: close
+
+{
+  "message": "Send a POST request with a message.",
+  "timestamp": "2025-01-18T18:12:13.777636+00:00"
+}
+```
+
+##### Via terminal
+
+```
+(venv) host32:silence-speaks-python-project XXXXX$ curl http://127.0.0.1:5000/echo
+{"message":"Send a POST request with a message.","timestamp":"2025-01-18T18:11:33.525735+00:00"}
+```
+
+#### Send a POST request
+
+##### Via REST Client
+
+```
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.13.1
+Date: Sat, 18 Jan 2025 18:14:27 GMT
+Content-Type: application/json
+Content-Length: 75
+Connection: close
+
+{
+  "message": "Hello, World!",
+  "timestamp": "2025-01-18T18:14:27.923479+00:00"
+}
+```
+
+##### Via terminal
+
+```
+(venv) host32:silence-speaks-python-project XXXXX$ curl -X POST http://127.0.0.1:5000/echo -H "Content-Type: application/json" -d '{"message": "Hello, World!"}'
+{"message":"Hello, World!","timestamp":"2025-01-18T18:15:09.525414+00:00"}
+```
 
 ---
 
@@ -176,6 +291,10 @@ To run test, use:
 ### Simple Race Simulation
 To run test, use:
 `python3 -m unittest race_simulation/tests/race_sim_test.py`
+
+### REST API
+To run test, use:
+`python3 -m unittest rest_microservice/tests/test_routes.py`
 
 ---
 
@@ -194,3 +313,9 @@ To run test, use:
 | [Cornell University](https://www.cs.cornell.edu/courses/cs1110/2016sp/lectures/03-01-16/9B.Randomness.pdf) | Cornell University - Random Simulations |
 | [Co Edu](https://forum.edu.cospaces.io/t/building-a-simple-randomized-race-with-lists-and-functions/7902/6) | Building a simple randomized race with lists and functions |
 | [Geeks for Geeks](https://www.geeksforgeeks.org/program-convert-speed-kmhr-msec-vice-versa/) | Program to convert speed in km/hr to m/sec and vice versa |
+| [Geeks for Geeks](https://www.geeksforgeeks.org/comparison-of-fastapi-with-django-and-flask/) | Comparison of FastAPI with Django and Flask |
+| [Real Python](https://realpython.com/flask-by-example-part-1-project-setup/) | Flask by Example |
+| [Flask](https://flask.palletsprojects.com/en/stable/tutorial/factory/) | Application Setup |
+| [Felipe Silveira](https://python.plainenglish.io/flask-restful-apis-72e05f8d41fa) | FlaskRESTful API Best Practices |
+| [Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxiii-application-programming-interfaces-apis) | The Flask Mega-Tutorial, Part XXIII: Application Programming Interfaces (APIs) |
+| [microapis](https://youtu.be/mt-0F_5KvQw?si=_ifio0q7dwfTHzzS) | Build APIs with Flask (the right way) |
