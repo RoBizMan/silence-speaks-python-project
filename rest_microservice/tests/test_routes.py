@@ -1,12 +1,12 @@
 import sys
 import os
 import unittest
+from app import create_app
 
 sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 )
 
-from app import create_app 
 
 class FlaskAppTests(unittest.TestCase):
     def setUp(self):
@@ -23,6 +23,7 @@ class FlaskAppTests(unittest.TestCase):
         self.assertEqual(
             json_data["message"], "Send a POST request with a message."
         )
+
 
 if __name__ == '__main__':
     unittest.main()
