@@ -1,6 +1,10 @@
 Bengaluru, Hyderabad
-Bengaluru, Bengaluru
 Chennai, Bengaluru
 Hyderabad, Nagpur
 Hyderabad, Vijayawada
 Bengaluru, Kochi
+Mumbai, Delhi
+Kolkata, Mumbai
+Guwahati, Ahmedabad
+Jaipur, Guwahati
+Indore, Delhi
