@@ -1,5 +1,11 @@
 # Silence Speaks Python Project
 
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/RoBizMan/silence-speaks-python-project)](https://github.com/RoBizMan/silence-speaks-python-project/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/RoBizMan/silence-speaks-python-project)](https://github.com/RoBizMan/silence-speaks-python-project/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/RoBizMan/silence-speaks-python-project)](https://github.com/RoBizMan/silence-speaks-python-project)
+
+---
+
 This repository contains my solutions to the Python coding project provided by Silence Speaks.
 
 ---
@@ -10,6 +16,8 @@ This repository contains my solutions to the Python coding project provided by S
 - [Simple Race Simulation](#simple-race-simulation)
 - [REST API](#rest-api)
 - [Testing](#testing)
+- [Agile Development Process](#agile-development-process)
+- [GitHub Issues](#github-issues)
 - [Credits](#credits)
 
 ---
@@ -298,7 +306,59 @@ To run test, use:
 
 ---
 
+## Agile Development Process
+
+### GitHub Projects
+
+[GitHub Projects](https://github.com/users/RoBizMan/projects/7) served as an Agile tool for this project.
+It isn't a specialised tool, but with the right tags and project creation/issue assignments, it can work.
+
+Through it, user stories, issues, and milestone tasks were planned and tracked weekly using the basic Kanban board.
+
+### GitHub Issues
+
+[GitHub Issues](https://github.com/RoBizMan/silence-speaks-python-project/issues) served as another Agile tool.
+
+It also helped with milestone iterations.
+
+- [Open Issues](https://github.com/RoBizMan/silence-speaks-python-project/issues) [![GitHub issues](https://img.shields.io/github/issues/RoBizMan/silence-speaks-python-project)](https://github.com/RoBizMan/silence-speaks-python-project/issues)
+
+- [Closed Issues](https://github.com/RoBizMan/silence-speaks-python-project/issues?q=is%3Aissue%20state%3Aclosed) [![GitHub closed issues](https://img.shields.io/github/issues-closed/RoBizMan/silence-speaks-python-project)](https://github.com/RoBizMan/silence-speaks-python-project/issues?q=is%3Aissue%20state%3Aclosed)
+
+---
+
+## GitHub **Issues**
+
+### Fixed Bugs
+
+[![GitHub issue custom search](https://img.shields.io/github/issues-search?query=repo%3ARoBizMan%2Fsilence-speaks-python-project%20label%3Abug&label=bugs)](https://github.com/RoBizMan/silence-speaks-python-project/issues?q=is%3Aissue%20label%3Abug)
+
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/RoBizMan/silence-speaks-python-project)](https://github.com/RoBizMan/silence-speaks-python-project/issues?q=is%3Aissue+is%3Aclosed)
+
+All previously closed/fixed bugs can be tracked [here](https://github.com/RoBizMan/silence-speaks-python-project/issues?q=is%3Aissue+is%3Aclosed).
+
+| Bug | Status |
+| - | - |
+| [Race simulation no maximum races simulation](https://github.com/RoBizMan/silence-speaks-python-project/issues/19) | Closed |
+
+### Open Issues
+
+[![GitHub issues](https://img.shields.io/github/issues/RoBizMan/silence-speaks-python-project)](https://github.com/RoBizMan/silence-speaks-python-project/issues)
+
+
+Any remaining open issues can be tracked [here](https://github.com/RoBizMan/silence-speaks-python-project/issues).
+
+No open issues so far.
+
+### Unfixed Bugs
+
+> [!NOTE]  
+> There are no remaining bugs that I am aware of.
+
+---
+
 ## Credits
+
 | Source | Notes |
 | - | - |
 | [Stack Overflow](https://stackoverflow.com/questions/62684227/pros-and-cons-of-different-implementations-of-graph-adjacency-list/62684297#62684297) | Pros and cons of different implementations of graph adjacency list |
@@ -319,3 +379,4 @@ To run test, use:
 | [Felipe Silveira](https://python.plainenglish.io/flask-restful-apis-72e05f8d41fa) | FlaskRESTful API Best Practices |
 | [Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxiii-application-programming-interfaces-apis) | The Flask Mega-Tutorial, Part XXIII: Application Programming Interfaces (APIs) |
 | [microapis](https://youtu.be/mt-0F_5KvQw?si=_ifio0q7dwfTHzzS) | Build APIs with Flask (the right way) |
+| [Python](https://docs.python.org/3/library/unittest.html) | unittest - Unit testing framework |
