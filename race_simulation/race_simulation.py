@@ -107,3 +107,89 @@ class Truck(Vehicle):
             weight=random.randint(4225, 9375)
         )
 
+
+def simulate_race():
+    """
+    Simulate a race between a motorcycle, a car, and a truck,
+    and determine the winner.
+
+    Returns:
+        tuple: A tuple containing the name of the winning vehicle and
+        a dictionary of race times for each vehicle.
+    """
+    motorcycle = Motorcycle("Royal Enfield")
+    car = Car("Hindustan Ambassador")
+    truck = Truck("Tata 1210")
+
+    vehicles = [motorcycle, car, truck]
+
+    times = {vehicle.name: vehicle.race_track() for vehicle in vehicles}
+    winner = min(times, key=times.get)
+
+    # Format times for better display
+    formatted_times = {name:
+                    format_time(time) for name, time in times.items()}
+    
+    return winner, formatted_times
+
+
+def format_time(seconds):
+    """
+Convert time in seconds to a formatted string of minutes and seconds.
+    """
+    minutes = int(seconds // 60)
+    remaining_seconds = seconds % 60
+    return f"{minutes}m {remaining_seconds:.2f}s"
+
+
+def main():
+    while True:
+        user_input = input(
+            "\nPress Enter to start the simulation or type 'quit' to exit: "
+        ).strip().lower()
+
+        if user_input == 'quit':
+            print("\nExiting the race simulation. Goodbye!\n")
+            break
+
+        if user_input:
+            print(
+                "\nInvalid input! Please press Enter to start the simulation"
+                " or type 'exit' to quit."
+            )
+            continue
+
+        while True:
+            try:
+                number_races = int(
+                    input("\nEnter the number of races to simulate: ")
+                )
+                for i in range(number_races):
+                    winner, times = simulate_race()
+                    print(
+                        f"Race {i + 1}: Winner is {winner} "
+                        f"with times: {times}\n"
+                    )
+            except ValueError:
+                print("Please enter a valid number for the number of races.")
+                continue
+
+            end_race_input = input(
+                "Simulation complete. Type 'restart' to simulate again "
+                "or 'exit' to quit: "
+            ).strip().lower()
+
+            if end_race_input == "exit":
+                print("\nExiting the race simulation. Goodbye!\n")
+                exit()
+            elif end_race_input == "restart":
+                print("\nRestarting the simulation...")
+                break
+            else:
+                print(
+                    "Invalid input! Please type 'restart' to simulate again "
+                    "or 'exit' to quit: "
+                )
+
+if __name__ == "__main__":
+    main()
