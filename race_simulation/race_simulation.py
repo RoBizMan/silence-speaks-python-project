@@ -1,5 +1,6 @@
 import random
 
+
 class Vehicle:
     """
     Base class for all vehicles in the race simulation.
@@ -127,9 +128,10 @@ def simulate_race():
     winner = min(times, key=times.get)
 
     # Format times for better display
-    formatted_times = {name:
-                    format_time(time) for name, time in times.items()}
-    
+    formatted_times = {
+        name: format_time(time) for name, time in times.items()
+    }
+
     return winner, formatted_times
 
 
@@ -143,6 +145,8 @@ Convert time in seconds to a formatted string of minutes and seconds.
 
 
 def main():
+    MAX_RACES = 50
+
     while True:
         user_input = input(
             "\nPress Enter to start the simulation or type 'quit' to exit: "
@@ -162,8 +166,20 @@ def main():
         while True:
             try:
                 number_races = int(
-                    input("\nEnter the number of races to simulate: ")
+                    input(
+                        "\nEnter the number of races to "
+                        f"simulate (minimum - 1 to maximum - {MAX_RACES}): "
+                    )
                 )
+
+                # Minimum and maximum number of races to simulate
+                if number_races < 1:
+                    print("\nYou must simulate at least 1 race.")
+                    continue
+                elif number_races > MAX_RACES:
+                    print(f"\nYou can only simulate up to {MAX_RACES} races.")
+                    continue
+
                 for i in range(number_races):
                     winner, times = simulate_race()
                     print(
@@ -171,7 +187,7 @@ def main():
                         f"with times: {times}\n"
                     )
             except ValueError:
-                print("Please enter a valid number for the number of races.")
+                print("\nPlease enter a valid number for the number of races.")
                 continue
 
             end_race_input = input(
@@ -190,6 +206,7 @@ def main():
                     "Invalid input! Please type 'restart' to simulate again "
                     "or 'exit' to quit: "
                 )
+
 
 if __name__ == "__main__":
     main()
