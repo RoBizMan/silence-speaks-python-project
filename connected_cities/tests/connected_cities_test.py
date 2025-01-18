@@ -7,7 +7,7 @@ from unittest.mock import patch, mock_open
 
 
 class TestCityConnections(unittest.TestCase):
-    
+
     def setUp(self):
         self.graph = defaultdict(list)
         self.graph['Bengaluru'] = ['Hyderabad', 'Chennai', 'Kochi']
@@ -23,7 +23,7 @@ class TestCityConnections(unittest.TestCase):
         self.graph['Ahmedabad'] = ['Guwahati']
         self.graph['Jaipur'] = ['Guwahati']
         self.graph['Indore'] = ['Delhi']
-    
+
     def test_check_connected_cities_directly_connected(self):
         """Test direct connectivity between two cities."""
         self.assertTrue(
@@ -32,7 +32,7 @@ class TestCityConnections(unittest.TestCase):
         self.assertFalse(
             check_connected_cities(self.graph, 'Guwahati', 'Delhi')
         )
-    
+
     def test_check_connected_cities_indirectly_connected(self):
         """Test indirect connectivity between two cities."""
         self.assertTrue(
@@ -44,7 +44,7 @@ class TestCityConnections(unittest.TestCase):
         self.assertFalse(
             check_connected_cities(self.graph, 'Mumbai', 'Guwahati')
         )
-    
+
     def test_check_connected_cities_not_connected(self):
         """Test if cities are not connected."""
         self.assertTrue(
@@ -53,7 +53,7 @@ class TestCityConnections(unittest.TestCase):
         self.assertFalse(
             check_connected_cities(self.graph, 'Jaipur', 'Kolkata')
         )
-    
+
     def test_check_connected_cities_non_existent(self):
         """Test if one or both cities do not exist in the graph."""
         self.assertTrue(
@@ -81,13 +81,13 @@ class TestCityConnections(unittest.TestCase):
             'Indore': ['Delhi']
         }
         self.assertEqual(self.graph, mock_graph)
-    
+
     @patch("builtins.open", mock_open(read_data="InvalidLineWithoutComma\n"))
     def test_load_city_node_invalid_format(self):
         """Test loading a file with invalid format."""
         with self.assertRaises(ValueError):
             load_city_node('invalid_file_path.txt')
-    
+
     def test_load_city_node_missing_file(self):
         """Test loading a non-existent file."""
         with self.assertRaises(FileNotFoundError):

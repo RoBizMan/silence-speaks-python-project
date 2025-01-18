@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 def load_city_node(file_path):
     """
     Extract pairs of connected cities nodes from the file
@@ -43,31 +44,32 @@ def load_city_node(file_path):
         ) from e
     return graph
 
+
 def check_connected_cities(graph, city1, city2):
     """
     Checks if two cities are connected in the graph using
     Depth-First Search (DFS).
 
-    This function determines whether there is a path of connected cities 
+    This function determines whether there is a path of connected cities
     between `city1` and `city2` by traversing the graph. It returns `True`
-    if a path exists, otherwise it returns `False`. The graph is represented 
+    if a path exists, otherwise it returns `False`. The graph is represented
     as an adjacency list, where each city points to a list of cities
     it is connected to.
 
     Args:
-        graph (dict): A dictionary representing the graph of connected cities, 
-                    where keys are city names and values are lists of cities 
+        graph (dict): A dictionary representing the graph of connected cities,
+                    where keys are city names and values are lists of cities
                     directly connected to the key city.
         city1 (str): The name of the first city to check for connectivity.
         city2 (str): The name of the second city to check for connectivity.
 
     Returns:
-        bool: `True` if there is a path between `city1` and `city2`, 
+        bool: `True` if there is a path between `city1` and `city2`,
             `False` otherwise.
     """
     if city1 not in graph or city2 not in graph:
         return False
-    
+
     visited = set()
 
     def dfs(current_city):
@@ -79,13 +81,14 @@ def check_connected_cities(graph, city1, city2):
                 if dfs(related_city):
                     return True
         return False
-    
+
     return dfs(city1)
+
 
 def main():
     """
     Main function to load city connections and interact with the user to check
-    if two cities are connected. The user can input two city names, and the 
+    if two cities are connected. The user can input two city names, and the
     function will determine if the cities are connected either directly or
     indirectly through other cities. The program handles various input
     validations, including checking for valid city names, ensuring that cities
@@ -114,7 +117,7 @@ def main():
     try:
         city_graph = load_city_node(file_path)
         print("Graph loaded successfully.")
-        
+
         while True:
             city1 = input(
                 "Enter the first city (or type 'exit' to quit): "
@@ -155,7 +158,7 @@ def main():
             if formatted_city1 == formatted_city2:
                 print("Error: You entered the same city for both inputs.")
                 continue
-            
+
             # Error handling for non-existent cities
             if (
                 formatted_city1 not in city_graph
@@ -164,7 +167,7 @@ def main():
                     f"Error: One or both of the cities '{formatted_city1}'"
                     f" and '{formatted_city2}' do not exist.")
                 continue
-            
+
             # Check connectivity
             if check_connected_cities(
                 city_graph, formatted_city1, formatted_city2
@@ -180,6 +183,7 @@ def main():
 
     except Exception as e:
         print(e)
+
 
 if __name__ == "__main__":
     main()
